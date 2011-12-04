@@ -1,3 +1,4 @@
+require 'rspec'
 require 'blazing'
 
 ENV['PATH'] = "#{File.expand_path(File.dirname(__FILE__) + '/../../bin')}#{File::PATH_SEPARATOR}#{ENV['PATH']}"
@@ -6,6 +7,10 @@ ENV['PATH'] = "#{File.expand_path(File.dirname(__FILE__) + '/../../bin')}#{File:
 # Stuff borrowed from carlhuda/bundler
 #
 RSpec.configure do |config|
+
+  # config.color_enabled = true
+  # config.filter_run :focus => true
+  # config.run_all_when_everything_filtered = true
 
   #
   # Reset Logger
