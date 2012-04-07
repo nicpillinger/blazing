@@ -13,6 +13,7 @@ class Blazing::Recipe
 
   def run(target_options = {})
     @options.merge! target_options
+    #defaults.merge! @options #TODO: provide default settings
   end
 
   class << self
