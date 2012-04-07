@@ -4,7 +4,7 @@ module Blazing
 
     include Blazing::Logger
 
-    attr_accessor :name, :location, :options, :config
+    attr_accessor :name, :location, :options, :config, :repository, :hook
 
     def initialize(name, location, config, options = {})
       @name = name
@@ -12,6 +12,8 @@ module Blazing
       @config = config
       @options = options
       @target = self
+      @hook = Hook.new(self)
+      @repository = Repository.new(self)
     end
 
     #
@@ -19,15 +21,15 @@ module Blazing
     #
     def setup
       info "Setting up repository for #{name} in #{location}"
-      Repository.new(self).setup
+      repository.setup
     end
 
     #
     # Update git remote and hook
     #
     def update
-      Repository.new(self).add_git_remote
-      Hook.new(self).setup
+      repository.add_git_remote
+      hook.setup
     end
 
     def path
